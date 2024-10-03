@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect"
-import UserModel from "@/app/model/user"
+import UserModel from "@/model/user"
 import bcrypt, { hash } from "bcryptjs" 
 
 import { sendVerificationEmail } from "@/helper/sendVerificationEmail"
