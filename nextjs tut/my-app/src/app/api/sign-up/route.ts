@@ -10,12 +10,18 @@ export async function POST(request: Request ){
 
     try{
 
-        const {username ,email,passwword} = await request.json()
+        const {username ,email,password} = await request.json()
 
       const existinUserVerifiedByUsername = await UserModel.findOne({
         username,
         isVerified:true
       })
+
+      if (!username || !email || !password) {
+        return new Response(JSON.stringify({ error: 'All fields are required' }), {
+          status: 400,
+        });
+      }
 
 if(existinUserVerifiedByUsername){
     return Response.json({
@@ -34,7 +40,7 @@ if(existingUserByEmail){
             message: 'user already exist with this email'
         } , {status: 400})
     }else{
-        const hashedPassword = await bcrypt.hash(passwword,10)
+        const hashedPassword = await bcrypt.hash(password,10)
 existingUserByEmail.password = hashedPassword;
 existingUserByEmail.verifyCode = verifyCode
 existingUserByEmail.verifyCodeExpiry = new Date(Date.now()+3600000)
@@ -42,7 +48,7 @@ await existingUserByEmail.save()
     }
 }
 else{
-    const hashedPassword = await bcrypt.hash(passwword,10)
+    const hashedPassword = await bcrypt.hash(password,10)
     const expiryDate = new Date()
         expiryDate.setHours(expiryDate.getHours()+1)
     
