@@ -2,14 +2,19 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/user";
 import { decode } from "punycode";
 import { use } from "react";
+import { NextResponse } from 'next/server';
 
 export async function POST(request: Request){
     await dbConnect() 
 
     try {
-      const {username, code} = await request.json()  
+      const {username, code} = await request.json() 
+      console.log(username.username);
+      console.log(code);
+      
+       
 
-      const decodeUsername = decodeURIComponent(username)
+      const decodeUsername = decodeURIComponent(username.username)
       const user = await UserModel.findOne({username: decodeUsername})
 
       if (!user) {
@@ -67,3 +72,5 @@ export async function POST(request: Request){
         )
     }
 }
+
+

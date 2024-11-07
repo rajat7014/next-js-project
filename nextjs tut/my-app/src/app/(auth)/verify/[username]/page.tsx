@@ -22,10 +22,13 @@ const VerifyAccount = () => {
         resolver: zodResolver(verifySchema),
         
       })
+      console.log(param);
+      
 
 const onSubmit = async (data: z.infer<typeof verifySchema>) =>{
     try {
         const response = await axios.post(`/api/verify-code`,{
+          username:param,
             code: data.code
         })
 
@@ -33,7 +36,7 @@ const onSubmit = async (data: z.infer<typeof verifySchema>) =>{
             title:"Success",
             description: response.data.message
         })
-        router.replace('sign-in')
+        router.replace('/sign-in')
 
     } catch (error) {
         console.error(' Error in signup of user',error)

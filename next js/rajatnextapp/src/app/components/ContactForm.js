@@ -175,18 +175,18 @@ const ContactForm = () => {
         e.preventDefault();
 
         try {
-            // const response = await fetch('/api/contact', {
-            //     method:'POST',
-            //     headers:{"Content_Type":"application/json"},
-            //     body: JSON.stringify({
-            //         username:user.username,
-            //         email:user.email,
-            //         phone:user.phone,
-            //         message:user.message
-            //     })
-            // })
+            const response = await fetch('/api/contact', {
+                method:'POST',
+                headers:{"Content_Type":"application/json"},
+                body: JSON.stringify({
+                    username:user.username,
+                    email:user.email,
+                    phone:user.phone,
+                    message:user.message
+                })
+            })
             // Set the status based on the response from the API route
-            const response=await axios.post(user);
+            // const response=await axios.post(user);
             if (response.status === 200) {
                 setUser({
                     username: "",

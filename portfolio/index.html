@@ -233,30 +233,7 @@ nav ul li a:hover {
             color: #333;
         }
 
-        #contact {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #contact h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        #contact p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            color: #666;
-        }
-
-        .submit-form {
-            display: flex;
-            flex-direction: column;
-        }
+        
 
         .submit-form input,
         .submit-form textarea {
@@ -400,6 +377,84 @@ nav ul li a:hover {
         footer p {
             margin: 0;
         } */
+
+        .contact-section {
+  padding: 50px 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+}
+
+.submit-btn {
+  padding: 12px 30px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.form-message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #28a745;
+}
+
+
+
     </style>
 </head>
 <body>
@@ -468,25 +523,33 @@ nav ul li a:hover {
             </div>
         </div>
     </section>
-    <!-- Contact Us Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>If you have any questions or would like to work together, feel free to send me a message!</p>
-        
-        <form action="/submit-form" method="POST"></form>
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <input type="text" name="subject" placeholder="Subject" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-            <!-- <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <input type="text" name="subject" placeholder="Subject" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button> -->
-        
-    </section>
+   
+
+    <h2>Contact Me</h2>
+    <p>I'd love to hear from you! Please fill out the form below and I'll get back to you as soon as possible.</p>
+    
+    <form id="contactForm" class="contact-form" onsubmit="return validateForm()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+    
+    <div id="formMessage" class="form-message"></div>
+  </div>
+</section>
 
     <!-- Footer -->
 
@@ -495,7 +558,7 @@ nav ul li a:hover {
         <p>Stay connected with me on social media for updates on my latest projects and designs.</p>
 
         <div class="social-icons">
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/rajat_ydv980/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
 
@@ -531,6 +594,9 @@ nav ul li a:hover {
             alert('Thank you, ' + name + '! Your message has been sent.');
         });
     </script>
+
+
+<script src="server.js"></script>
 
 </body>
 </html>
